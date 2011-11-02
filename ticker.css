@@ -1,0 +1,100 @@
+/* @override http://localhost/player/ticker.css */
+
+/* @override http://localhost/player/ticker.css */
+
+/* @override http://localhost/player/ticker.css */
+
+#ticker-wrapper * {
+	margin: 0;
+	padding: 0;
+	
+}
+
+#ticker-wrapper p{
+	margin-top: 20px;
+	font-size:  14px;
+}
+
+#ticker-wrapper.has-js {
+	width: 220px;
+
+	display: block;
+	font-size: 13px;
+	text-align: left;
+	padding: 0;
+}
+
+#ticker {
+	width: 220px;
+	
+	display: block;
+	float: left;
+	position: relative;
+	overflow: hidden;
+	background-color: #000;
+	padding: 0;
+	
+}
+
+#ticker-title {
+	
+	float: left;
+	color: #000;
+	font-weight: 700;
+	background-color: #000;
+	text-transform: uppercase;
+	display: none;
+}
+
+
+#ticker-content {
+	margin-top: 30px;
+	width: 220px;
+	color: #fff;
+	font-weight: 700;
+	background-color: #000;	
+}
+
+#ticker-content A {
+	text-decoration: none;
+	color: #1F527B;
+}
+
+#ticker-content h2 {
+	text-decoration: none;
+	color: #FFF;
+	font-size: 19px;
+
+}
+
+#ticker-content A:hover {
+	text-decoration: underline;
+	color: #fff
+}
+
+#ticker-swipe {
+	
+	position: absolute;
+	top: 27px;
+	left: 80px;
+	background-color: #000;
+	display: block;
+	width: 220px;
+	height: 30px;
+	color: #fff;
+}
+
+#ticker-swipe SPAN {
+	margin-left: 1px;
+	background-color: #fff;
+	border-bottom: 1px solid #1F527B;
+	height: 20px;
+	width: 7px;
+	display: block
+}
+
+
+.js-hidden {
+	display: none;
+	padding: 0;
+}
