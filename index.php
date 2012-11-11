@@ -1,297 +1,146 @@
-<?php 
-require "previsioni.php";
-require "oroscopo.php";
-?>
-<!DOCTYPE HTML>
-<html>
-
-<head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>Pubblicità</title>
-		<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
-		<link rel="stylesheet" type="text/css" href="carousel.css" />
-		<link rel="stylesheet" type="text/css" href="ticker.css" />
-		<link href="./jplayer.blue.monday.css" rel="stylesheet" type="text/css">
-		
-		<script type="text/javascript" src="./js/jquery.js"></script>
-		<script type="text/javascript" src="./js/jquery.ticker.min.js"></script>
-		<script src="./js/jcarousellite.js" type="text/javascript"></script>
-		<script type="text/javascript" async="" src="./js/load.js"></script>
-		<script type="text/javascript" src="./js/flattr.js"></script>
-		<script type="text/javascript" src="./js/jquery.jplayer.min.js"></script>
-		<script type="text/javascript" src="./js/jquery.jplayer.inspector.js"></script>
+<?php require("weather.php"); ?>
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Simple Media Signage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Michele Adduci">
 	
+	<!-- Load player theme -->
+    <link rel="stylesheet" href="player/theme/style.css" type="text/css" media="screen" />
+    <!-- Load jquery -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+	<!-- Video Player-->
+	<script type="text/javascript" src="player/js/projector.min.js"></script>
+    <!-- Style -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    </style>
+	
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+	
+	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="http://twitter.github.com/bootstrap/assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="https://github.com/blackibiza84/Simple-Media-Signage">Simple Media Signage - <?php echo date("D d/m/Y"); ?></a>
+          <div class="nav-collapse collapse">
+            <p class="navbar-text pull-right">
+              Author: <a href="http://www.micheleadduci.net" class="navbar-link">Michele Adduci</a>
+            </p>
+            <ul class="nav">
+              <!-- <li class="active"><a href="#">Home</a></li> -->
+              <!-- <li><a href="#about">About</a></li> -->
+              <!-- <li><a href="#contact">Contact</a></li> -->
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Sidebar</li>
+              <li class="active"><a href="#"><?php weather("70100"); ?></a></li>
+             
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+          <div class="hero-unit">
+            <p>
+			<video id="player_a" class="projekktor" poster="player/media/intro.png" title="Video Player">
 			
+			</video>
+			</p>
+           
+          </div>
+          <div class="row-fluid">
+            <div class="span4">
+              <h2>Heading</h2>
+              <p> </p>
+             
+            </div><!--/span-->
+            <div class="span4">
+              <h2>Heading</h2>
+              <p></p>
+             
+            </div><!--/span-->
+            <div class="span4">
+              <h2>Heading</h2>
+              <p></p>
+              
+            </div><!--/span-->
+          </div><!--/row-->
+         </div><!--/span-->
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p>Copyright &copy; <?php echo date("Y"); ?> - <a href="http://www.micheleadduci.net" target="_blank">Michele Adduci</a></p>
+      </footer>
+
+    </div><!--/.fluid-container-->
 	
-		<script type="text/javascript">
-		    $(document).ready(function() {
-		    
-				newsticker_target="ANSA";
-			    if (top.news!=null && top.fadeInit) {
-			 		onload=fadeInit;
-			    }
-		
-				$("#boxtempo").jCarouselLite({
-				        vertical: true,
-					    visible: 1,
-						auto:3500,
-						speed:1500
-				    });
-					var Playlist = function(instance, playlist, options) {
-						var self = this;
-
-						this.instance = instance; // String: To associate specific HTML with this playlist
-						this.playlist = playlist; // Array of Objects: The playlist
-						this.options = options; // Object: The jPlayer constructor options for this playlist
-
-						this.current = 0;
-
-						this.cssId = {
-							jPlayer: "jquery_jplayer_",
-							interface: "jp_interface_",
-							playlist: "jp_playlist_"
-						};
-						this.cssSelector = {};
-
-						$.each(this.cssId, function(entity, id) {
-							self.cssSelector[entity] = "#" + id + self.instance;
-						});
-
-						if(!this.options.cssSelectorAncestor) {
-							this.options.cssSelectorAncestor = this.cssSelector.interface;
-						}
-
-						$(this.cssSelector.jPlayer).jPlayer(this.options);
-
-						$(this.cssSelector.interface + " .jp-previous").click(function() {
-							self.playlistPrev();
-							$(this).blur();
-							return false;
-						});
-
-						$(this.cssSelector.interface + " .jp-next").click(function() {
-							self.playlistNext();
-							$(this).blur();
-							return false;
-						});
-					};
-
-					Playlist.prototype = {
-						displayPlaylist: function() {
-							var self = this;
-							$(this.cssSelector.playlist + " ul").empty();
-							for (i=0; i < this.playlist.length; i++) {
-								var listItem = (i === this.playlist.length-1) ? "<li class='jp-playlist-last'>" : "<li>";
-								listItem += "<a href='#' id='" + this.cssId.playlist + this.instance + "_item_" + i +"' tabindex='1'>"+ this.playlist[i].name +"</a>";
-
-								// Create links to free media
-								if(this.playlist[i].free) {
-									var first = true;
-									listItem += "<div class='jp-free-media'>(";
-									$.each(this.playlist[i], function(property,value) {
-										if($.jPlayer.prototype.format[property]) { // Check property is a media format.
-											if(first) {
-												first = false;
-											} else {
-												listItem += " | ";
-											}
-											listItem += "<a id='" + self.cssId.playlist + self.instance + "_item_" + i + "_" + property + "' href='" + value + "' tabindex='1'>" + property + "</a>";
-										}
-									});
-									listItem += ")</span>";
-								}
-
-								listItem += "</li>";
-
-								// Associate playlist items with their media
-								$(this.cssSelector.playlist + " ul").append(listItem);
-								$(this.cssSelector.playlist + "_item_" + i).data("index", i).click(function() {
-									var index = $(this).data("index");
-									if(self.current !== index) {
-										self.playlistChange(index);
-									} else {
-										$(self.cssSelector.jPlayer).jPlayer("play");
-									}
-									$(this).blur();
-									return false;
-								});
-
-								// Disable free media links to force access via right click
-								if(this.playlist[i].free) {
-									$.each(this.playlist[i], function(property,value) {
-										if($.jPlayer.prototype.format[property]) { // Check property is a media format.
-											$(self.cssSelector.playlist + "_item_" + i + "_" + property).data("index", i).click(function() {
-												var index = $(this).data("index");
-												$(self.cssSelector.playlist + "_item_" + index).click();
-												$(this).blur();
-												return false;
-											});
-										}
-									});
-								}
-							}
-						},
-						playlistInit: function(autoplay) {
-							if(autoplay) {
-								this.playlistChange(this.current);
-							} else {
-								this.playlistConfig(this.current);
-							}
-						},
-						playlistConfig: function(index) {
-							$(this.cssSelector.playlist + "_item_" + this.current).removeClass("jp-playlist-current").parent().removeClass("jp-playlist-current");
-							$(this.cssSelector.playlist + "_item_" + index).addClass("jp-playlist-current").parent().addClass("jp-playlist-current");
-							this.current = index;
-							$(this.cssSelector.jPlayer).jPlayer("setMedia", this.playlist[this.current]);
-						},
-						playlistChange: function(index) {
-							this.playlistConfig(index);
-							$(this.cssSelector.jPlayer).jPlayer("play");
-						},
-						playlistNext: function() {
-							var index = (this.current + 1 < this.playlist.length) ? this.current + 1 : 0;
-							this.playlistChange(index);
-						},
-						playlistPrev: function() {
-							var index = (this.current - 1 >= 0) ? this.current - 1 : this.playlist.length - 1;
-							this.playlistChange(index);
-						}
-					};
-
-					var videoPlaylist = new Playlist("1", [
-						
-						{
-							name:"Name 1",
-							free:true,
-							m4v: "video/video1.m4v",
-
-							poster: ""
-						},
-						{
-							name:"Name 2",
-							
-							m4v: "video/001.m4v",
-
-							poster: ""
-						},
-						{
-							name:"Name 3",
-							m4v: "video/video3.m4v",
-
-							poster: ""
-						},
-
-						{
-							name:"Name 4",
-							m4v: "video/video2.m4v",
-
-							poster: ""
-						}
-					], {
-						ready: function() {
-							videoPlaylist.displayPlaylist();
-							videoPlaylist.playlistInit(true); // Parameter is a boolean for autoplay.
-						},
-						ended: function() {
-							videoPlaylist.playlistNext();
-						},
-						play: function() {
-							$(this).jPlayer("pauseOthers");
-						},
-						supplied: "ogv, m4v"
-					});
-
-				
-		});
-		</script>
-		<script type="text/javascript">
-			$(function () {
-				$('#boxoroscopo').ticker({
-					speed: 0.10,
-					pauseOnItems: 11000
-					
-				});
-			});
-		</script>
+    <script type="text/javascript">
+	$(document).ready(function() {
+		//dimensions setup
+		var width = document.body.offsetWidth;
+		var bodyHeight = document.body.scrollHeight;
+		var height = (typeof window.innerHeight !== "undefined")? window.innerHeight :  (document.documentElement)? document.documentElement.clientHeight : document.body.clientHeight;
+		height = (bodyHeight > height)? bodyHeight : height;
+		height = height*0.75;
+		$("#player_a").height(height);
+		//playlist setup
+	    projekktor('#player_a',{
+		width: false,
+		height: false,
+		loop: true,
+		autoplay: true,
+		controls: false,
+		continuous: true,
+		playlist: [
+		{
+		    0:{src:'player/media/augenblig.mp4', type:'video/mp4', imageScaling : "aspectratio"}
+		},
+		{
+		    0:{src:'player/media/skyfall.mp4', type:'video/mp4', imageScaling : "aspectratio"}
+		}
+	    ]}); // instantiation
+	});
+    </script>
 	
-	
-</head>
 
-<body>
-<div id="wrapper">
-	<div id="page">
-		<div id="content">
-        	<div class="post">
-				<div class="entry">
-               	 		<div class="jp-video jp-video-360p">
-							<div class="jp-type-playlist">
-								<div id="jquery_jplayer_1" class="jp-jplayer" style="background-color: rgb(0, 0, 0); "><video id="jp_video_0" preload="metadata" style="width: 0px; height: 0px; " src="./video/video1.m4v"></video></div>
-								<div id="jp_interface_1" class="jp-interface">
-									<div class="jp-video-play" style="display: block; "></div>
-	
-	
-								</div>
-								
-							</div>
-						</div>
-				</div>
-				<div class="entry"><br/><br/><br/>
-
-					<script>
-					        document.write('<iframe width="850" height="25" scrolling="no" frameborder="0" src="http://www.ansa.it/site/ssi/newsticker.html" marginheight="0" marginwidth="0" align="middle"></iframe>');
-					</script>
-				</div>
-        	</div>
-		</div>
-        <div id="sidebar">
-			<ul>
-               <li style="font-size: 20px; margin-top: 20px; font-weight: bold;">
- 				<?php echo (date("d/m/Y")); ?>
-				
-        	   </li>
-				<li>
-					<div id="spot">Dai pi&ugrave; visibilit&agrave; alla tua azienda!<br/></div>
-				</li>
-		       <li>
- 				
-       			<div id="boxtempo">
-                	<ul>
-					<li><?php meteo("Bari"); ?>    </li>
-					<li><?php meteo("Firenze"); ?> </li> 
-					<li><?php meteo("Roma"); ?>    </li> 
-					<li><?php meteo("Palermo"); ?> </li>
-					<li><?php meteo("Milano"); ?>  </li>  
-					<li><?php meteo("Napoli"); ?>  </li>  
-					<li><?php meteo("Venezia"); ?> </li> 
-					</ul>
-			   </div>
-        	   </li> 
-           	   <li>
-				<div id="ticker-wrapper" class="no-js">
-                	<ul id="boxoroscopo" class="js-hidden">
-					<li class="news-item"><?php giorno("ariete"); ?>  </li>
-					<li class="news-item"><?php giorno("toro"); ?>  </li>
-					<li class="news-item"><?php giorno("cancro"); ?>  </li>
-					<li class="news-item"><?php giorno("gemelli"); ?>  </li>
-					<li class="news-item"><?php giorno("leone"); ?>  </li>
-					<li class="news-item"><?php giorno("vergine"); ?>  </li>
-					<li class="news-item"><?php giorno("bilancia"); ?>  </li>
-					<li class="news-item"><?php giorno("scorpione"); ?>  </li>
-					<li class="news-item"><?php giorno("sagittario"); ?>  </li>
-					<li class="news-item"><?php giorno("capricorno"); ?>  </li>
-					<li class="news-item"><?php giorno("acquario"); ?>  </li>
-					<li class="news-item"><?php giorno("pesci"); ?>  </li>
-				
-					</ul>
-				</div>
-        	   </li>
-			 
-			<ul>
-		</div>
-		<div style="clear: both;">&nbsp;</div>
-		</div>
-</div>
-       
-</body>
-
-</html>
+</body></html>
